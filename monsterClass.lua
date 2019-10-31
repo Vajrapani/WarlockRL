@@ -37,11 +37,9 @@ end
 function monster:pathfinding()
 self:requestPath()
 
-if path then
-if path[2] ~= nil then -- if a path exists, change the (x,y) vals of the monster to be the next step
+if path and path[2] ~= nil  then -- if a path exists, change the (x,y) vals of the monster to be the next step
 self.x = path[2].x * gridMultiplier
 self.y = path[2].y * gridMultiplier
-end
 end
 
 end -- pathfinding()
