@@ -10,8 +10,8 @@ require 'miscSettings'
 map = {} -- map table
 isVisible = {} -- lighting table
 mapGen = false -- while this is false, the map should gen
-mapWidth = 30 -- x
-mapHeight = 30 -- y
+mapWidth = 35 -- x
+mapHeight = 35 -- y
 
 for x=1, mapWidth do -- makes a map full of walls, before a map generator iterates through it
   for y=1, mapHeight do
