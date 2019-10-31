@@ -1,6 +1,6 @@
 local class = require 'middleclass'
 require 'mapAndLighting'
-require 'miscSettings'
+require 'miscSettingsAndFunctions'
 require 'actorAndPlayerClasses'
 astar = require 'astar'
 

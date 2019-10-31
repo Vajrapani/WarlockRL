@@ -1,4 +1,4 @@
-require 'miscSettings'
+require 'miscSettingsAndFunctions'
 --[[
 # = wall
 . = ground

@@ -1,6 +1,6 @@
 local class = require 'middleclass'
 require 'mapAndLighting'
-require 'miscSettings'
+require 'miscSettingsAndFunctions'
 
 actor = class('actor') -- actor class
 id = 0

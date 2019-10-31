@@ -1,5 +1,5 @@
 local class = require 'middleclass'
-require 'miscSettings' -- misc values and functions that are useful
+require 'miscSettingsAndFunctions' -- misc values and functions that are useful
 require 'mapAndLighting' -- anything to do with the map and lighting/FOV
 require 'actorAndPlayerClasses' -- actor superclass and player subclass
 require 'monsterClass'
@@ -9,6 +9,7 @@ actors = {} -- table gets populated by the actor class as new ones are created
 turncount = 0
 
 function love.load()
+love.window.setTitle("WarlockRL")
 drunkWalk() -- Generates a cave-like map by using the drunk walk algorithm
 Warlock = player:new(Place()) -- Warlock is the player char
 monster1 = monster:new(Place())
@@ -30,8 +31,8 @@ function love.draw()
 
 
   love.graphics.setFont(InconsolataRegular)
-  love.graphics.print({{NormaliseRGB(203, 75, 22)}, "W A R L O C K"}, 37 * gridMultiplier, 1 * gridMultiplier)
-  love.graphics.print({{NormaliseRGB(203, 75, 22)}, "Turncount : " .. turncount}, 37 * gridMultiplier, 3 * gridMultiplier)
+  love.graphics.print({{NormaliseRGB(203, 75, 22)}, "[ W A R L O C K ]"}, 37 * gridMultiplier, 1 * gridMultiplier)
+  love.graphics.print({{NormaliseRGB(203, 75, 22)}, "[ Turncount ] : " .. turncount}, 37 * gridMultiplier, 3 * gridMultiplier)
 end
 
 
