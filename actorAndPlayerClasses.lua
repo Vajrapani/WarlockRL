@@ -31,6 +31,7 @@ self.energy = self.energy + 1
 
 if self.energy >= self.energyThreshold then
 self:getDecision()
+turncount = turncount + 1
 self.energy = self.energy - 1
 end
 end -- takeAction()
@@ -83,7 +84,7 @@ function player:getDecision()
     Warlock.x = Warlock.x + gridMultiplier
     Warlock.y = Warlock.y - gridMultiplier
   end
-
+else return false -- if player presses a button not on here, the turn doesn't progress
   end -- end of big if statement with the numpad buttons
 
   end -- getDecision()

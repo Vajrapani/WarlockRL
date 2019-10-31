@@ -6,6 +6,7 @@ require 'monsterClass'
 astar = require 'astar'
 
 actors = {} -- table gets populated by the actor class as new ones are created
+turncount = 0
 
 function love.load()
 drunkWalk() -- Generates a cave-like map by using the drunk walk algorithm
@@ -20,18 +21,23 @@ end
 
 function love.draw()
   love.graphics.setBackgroundColor(NormaliseRGB(0,43,54)) -- Solarized Base
-  love.graphics.setFont(Inconsolata)
+  love.graphics.setFont(InconsolataBold)
   drawMap()
   for actor in ipairs(actors) do -- print out all active actors
     actors[actor]:printToScreen()
   end
 
+
+  love.graphics.setFont(InconsolataRegular)
+  love.graphics.print({{NormaliseRGB(203, 75, 22)}, "W A R L O C K"}, 37 * gridMultiplier, 1 * gridMultiplier)
+  love.graphics.print({{NormaliseRGB(203, 75, 22)}, "Turncount : " .. turncount}, 37 * gridMultiplier, 3 * gridMultiplier)
 end
 
 
 function love.keypressed(key)
 if key == "kp1" or "kp2" or "kp3" or "kp4" or "kp5" or "kp6" or "kp7" or "kp8" or "kp9" then -- only numpad
   Warlock.input = key
+  --if Warlock:getDecision() ~= false then
   for actor in ipairs(actors) do
 
             if actors[actor]:takeAction() == true then
@@ -39,4 +45,5 @@ if key == "kp1" or "kp2" or "kp3" or "kp4" or "kp5" or "kp6" or "kp7" or "kp8" o
             end
         end
   end -- end of if key statement
-end -- keypressed()
+--end
+end-- keypressed()
