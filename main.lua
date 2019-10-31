@@ -12,7 +12,8 @@ function love.load()
 drunkWalk() -- Generates a cave-like map by using the drunk walk algorithm
 Warlock = player:new(Place()) -- Warlock is the player char
 monster1 = monster:new(Place())
-monsters2 = monster:new(Place())
+monster2 = monster:new(Place())
+monster3 = monster:new(Place())
 end
 
 function love.update(dt)
