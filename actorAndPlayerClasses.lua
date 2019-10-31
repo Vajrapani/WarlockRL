@@ -87,3 +87,7 @@ function player:getDecision()
   end -- end of big if statement with the numpad buttons
 
   end -- getDecision()
+
+function player:printToScreen()
+love.graphics.print({{NormaliseRGB(203, 75, 22)}, "@"}, self.x, self.y)
+end

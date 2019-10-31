@@ -11,6 +11,7 @@ function love.load()
 drunkWalk() -- Generates a cave-like map by using the drunk walk algorithm
 Warlock = player:new(Place()) -- Warlock is the player char
 monster1 = monster:new(Place())
+monsters2 = monster:new(Place())
 end
 
 function love.update(dt)
@@ -21,8 +22,10 @@ function love.draw()
   love.graphics.setBackgroundColor(NormaliseRGB(0,43,54)) -- Solarized Base
   love.graphics.setFont(Inconsolata)
   drawMap()
-  love.graphics.print({{NormaliseRGB(203, 75, 22)}, "@"}, Warlock.x, Warlock.y)
-  love.graphics.print({{NormaliseRGB(203, 75, 22)}, "N"}, monster1.x, monster1.y)
+  for actor in ipairs(actors) do -- print out all active actors
+    actors[actor]:printToScreen()
+  end
+
 end
 
 

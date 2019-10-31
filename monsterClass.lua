@@ -25,13 +25,18 @@ end -- takeAction()
 function monster:getDecision() -- currently monster will just move towards player
 self:requestPath()
 
+if path then
 if path[2] ~= nil then -- if a path exists, change the (x,y) vals of the monster to be the next step
 self.x = path[2].x * gridMultiplier
 self.y = path[2].y * gridMultiplier
 end
-
+end
 end -- getDecision()
 
 function monster:requestPath() -- generate A* star path from current actor (x,y) to player (x,y)
-path = astar:find(mapWidth, mapHeight, {x = self.x/gridMultiplier, y = self.y/gridMultiplier}, {x = Warlock.x/gridMultiplier, y = Warlock.y/gridMultiplier}, positionIsOpenFunc)
+path = astar:find(mapWidth, mapHeight, {x = self.x/gridMultiplier, y = self.y/gridMultiplier}, {x = Warlock.x/gridMultiplier, y = (Warlock.y/gridMultiplier) + 1}, positionIsOpenFunc)
+end
+
+function monster:printToScreen()
+love.graphics.print({{NormaliseRGB(203, 75, 22)}, "D"}, self.x, self.y)
 end
