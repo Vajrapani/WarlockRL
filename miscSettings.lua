@@ -25,3 +25,13 @@ local randomY = love.math.random(1, mapHeight)
 if map[randomX][randomY] == "." then return randomX, randomY end
 end
 end -- Place()
+
+-- returns true if an (x,y) position is walkable, false otherwise
+
+function positionIsOpenFunc (x, y)
+    -- should return true if the position is open to walk
+    if map[x][y] == "." then -- . is ground, so it's walkable
+    return true
+    end
+    return false
+end --positionIsOpenFunc()

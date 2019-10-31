@@ -30,16 +30,16 @@ end
 function drawMap()
   for x=1, mapWidth do
     for y=1, mapHeight do
-      if isVisible[x][y] == 1 then
+      --if isVisible[x][y] == 1 then
       love.graphics.print({{NormaliseRGB(220, 50, 47)}, map[x][y]}, x * gridMultiplier , y * gridMultiplier) -- 2 less than size of font
-    end
+    --end
   end
 end
 end -- drawMap
 
 -- Drunk Walk Algorithm. Replace/Refactor at some point
 
-maxDrunkSteps = (math.floor((mapWidth + mapHeight)/2) * 20) -- number of times the algorithm takes drunk steps
+maxDrunkSteps = (math.floor((mapWidth + mapHeight)/2) * 30) -- number of times the algorithm takes drunk steps
 
 drunkX = love.math.random(1, (mapWidth - 3))
 drunkY = love.math.random(1, (mapHeight - 3)) -- initial (x,y) position that the drunk walk algorithm starts on
