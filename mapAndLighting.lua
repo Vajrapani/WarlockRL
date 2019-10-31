@@ -30,9 +30,9 @@ end
 function drawMap()
   for x=1, mapWidth do
     for y=1, mapHeight do
-      --if isVisible[x][y] == 0 then
+      if isVisible[x][y] == 1 then
       love.graphics.print({{NormaliseRGB(220, 50, 47)}, map[x][y]}, x * gridMultiplier , y * gridMultiplier) -- 2 less than size of font
-    --end
+    end
   end
 end
 end -- drawMap
@@ -72,8 +72,8 @@ function FOV()
   for i=1, mapWidth do
     for j=1, mapHeight do
       --isVisible[i][j] = 0 -- 0 = not visible, populate table first
-      local x = i - (Warlock.x)
-      local y = j - (Warlock.y)
+      local x = i - (Warlock.x / gridMultiplier)
+      local y = j - (Warlock.y / gridMultiplier)
       local l = math.floor((x*x) + (y*y))
 
       if (l < Warlock.viewRadius) --[[and map[i][j] ~= "#"]] then
