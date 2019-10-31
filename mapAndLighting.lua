@@ -65,3 +65,31 @@ end
 mapGen = true
 end
 end -- drunkWalk()
+
+-- FOV algorithm, could be made better/more accurate
+
+function FOV()
+  for i=1, mapWidth do
+    for j=1, mapHeight do
+      --isVisible[i][j] = 0 -- 0 = not visible, populate table first
+      local x = i - (Warlock.x)
+      local y = j - (Warlock.y)
+      local l = math.floor((x*x) + (y*y))
+
+      if (l < Warlock.viewRadius) --[[and map[i][j] ~= "#"]] then
+        isVisible[i][j] = 1 -- 1 = visible
+    end
+  end
+end
+end -- FOV()
+
+-- testMap function where tileCollision happens
+function testMap(x, y) -- should prolly make this less verbose
+  futureX = (Warlock.x/ gridMultiplier) + x
+  futureY = (Warlock.y / gridMultiplier) + y
+
+	if map[futureX][futureY] == "#" then
+		return false
+  end
+  return true
+end

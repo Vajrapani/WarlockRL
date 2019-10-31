@@ -5,8 +5,8 @@ require 'miscSettings'
 actor = class('actor') -- actor class
 
 function actor:initialize(x, y, viewRadius) -- all actors will have (x,y) co-ordinates
-self.x = x
-self.y = y
+self.x = x * gridMultiplier
+self.y = y * gridMultiplier
 self.viewRadius = 8
 end
 
