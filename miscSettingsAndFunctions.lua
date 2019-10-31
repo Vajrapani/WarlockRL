@@ -36,3 +36,10 @@ function positionIsOpenFunc (x, y)
     end
     return false
 end --positionIsOpenFunc()
+
+
+function UI()
+  love.graphics.setFont(InconsolataRegular)
+  love.graphics.print({{NormaliseRGB(203, 75, 22)}, "[ W A R L O C K ]"}, 37 * gridMultiplier, 1 * gridMultiplier)
+  love.graphics.print({{NormaliseRGB(203, 75, 22)}, "[ Turncount ] : " .. turncount}, 37 * gridMultiplier, 3 * gridMultiplier)
+end
