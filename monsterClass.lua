@@ -27,7 +27,7 @@ self:pathfinding()
 end -- getDecision()
 
 function monster:requestPath() -- generate A* star path from current actor (x,y) to player (x,y)
-path = astar:find(mapWidth, mapHeight, {x = self.x/gridMultiplier, y = self.y/gridMultiplier}, {x = Warlock.x/gridMultiplier, y = (Warlock.y/gridMultiplier) + 1}, positionIsOpenFunc)
+path = astar:find(mapWidth, mapHeight, {x = self.x/gridMultiplier, y = self.y/gridMultiplier}, {x = Warlock.x/gridMultiplier, y = Warlock.y/gridMultiplier}, positionIsOpenFunc)
 end
 
 function monster:printToScreen()
