@@ -12,8 +12,7 @@ monster = class('monster', actor)
 
 function monster:initialize(x, y)
 actor.initialize(self, x, y)
-self.name = nil
-self.damage = nil
+self.monsterLevel = nil
 end
 
 function monster:takeAction()

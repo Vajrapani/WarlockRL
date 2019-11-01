@@ -12,8 +12,9 @@ function goblin:initialize(x, y)
 monster.initialize(self, x, y)
 self.nextToPlayer = nil
 self.name = "goblin"
-self.damage = 1
 self.health = 10
+self.monsterLevel = 5
+self.damage = (self.monsterLevel) + love.math.random(1, self.monsterLevel) -- damage range = ML to MLx2
 end
 
 function goblin:printToScreen()
