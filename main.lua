@@ -3,6 +3,7 @@ require 'miscSettingsAndFunctions' -- misc values and functions that are useful
 require 'mapAndLighting' -- anything to do with the map and lighting/FOV
 require 'actorAndPlayerClasses' -- actor superclass and player subclass
 require 'monsterClass'
+require 'goblin'
 astar = require 'astar'
 
 actors = {} -- table gets populated by the actor class as new ones are created
@@ -12,7 +13,7 @@ function love.load()
 love.window.setTitle("WarlockRL")
 drunkWalk() -- Generates a cave-like map by using the drunk walk algorithm
 Warlock = player:new(Place()) -- Warlock is the player char
-monster1 = monster:new(Place())
+monster1 = goblin:new(Place())
 --monster2 = monster:new(Place())
 --monster3 = monster:new(Place())
 end

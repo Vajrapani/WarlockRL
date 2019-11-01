@@ -12,6 +12,7 @@ monster = class('monster', actor)
 function monster:initialize(x, y)
 actor.initialize(self, x, y)
 self.nextToPlayer = nil
+self.name = nil
 end
 
 function monster:takeAction()
@@ -30,10 +31,6 @@ end -- getDecision()
 
 function monster:requestPath() -- generate A* star path from current actor (x,y) to player (x,y)
 path = astar:find(mapWidth, mapHeight, {x = self.x/gridMultiplier, y = self.y/gridMultiplier}, {x = Warlock.x/gridMultiplier, y = Warlock.y/gridMultiplier}, positionIsOpenFunc)
-end
-
-function monster:printToScreen()
-love.graphics.print({{NormaliseRGB(203, 75, 22)}, "M"}, self.x, self.y)
 end
 
 function monster:pathfinding()
@@ -55,6 +52,7 @@ end -- if statement
 
 end -- pathfinding()
 
+--[[
 function monster:combat()
 if self.nextToPlayer == true then--
 Warlock.health = Warlock.health - 10 -- replace this with AttackAction:attack
@@ -62,3 +60,4 @@ self:pathfinding()
 end
 
 end
+]]
