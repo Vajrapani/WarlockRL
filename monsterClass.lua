@@ -38,10 +38,15 @@ function monster:pathfinding()
 self:requestPath()
 
 if path and path[2] ~= nil  then -- if a path exists, change the (x,y) vals of the monster to be the next step
+actorMap[self.x / gridMultiplier][self.y / gridMultiplier] = ""
 local futureX = path[2].x * gridMultiplier
 local futureY = path[2].y * gridMultiplier
+if actorMap[futureX / gridMultiplier][futureY / gridMultiplier] ~= "actor" then
 self.x = futureX
 self.y = futureY
+end
+
+actorMap[self.x / gridMultiplier][self.y / gridMultiplier] = "actor"
 end -- if statement
 
 end -- pathfinding()

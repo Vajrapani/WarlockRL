@@ -9,6 +9,7 @@ require 'miscSettingsAndFunctions'
 
 map = {} -- map table
 isVisible = {} -- lighting table
+actorMap = {}
 mapGen = false -- while this is false, the map should gen
 mapWidth = 35 -- x
 mapHeight = 35 -- y
@@ -24,6 +25,13 @@ for x=1, mapWidth do -- sets the map to be all initially not visible.
   for y=1, mapHeight do
     isVisible[x] = isVisible[x] or {}
     isVisible[x][y] = "0"
+  end
+end
+
+for x=1, mapWidth do -- actor map, "" means empty and not a player or monster is occupying it
+  for y=1, mapHeight do
+  actorMap[x] = actorMap[x] or {}
+    actorMap[x][y] = ""
   end
 end
 
@@ -90,13 +98,14 @@ function testMap(x, y) -- should prolly make this less verbose
 
 	if map[futureX][futureY] == "#" then
 		return false
-  elseif isMonster(x, y) == true then
+  elseif actorMap[futureX][futureY] == "actor" then
     return false
   end
   return true
 end
 
-function isMonster(x, y)
+
+--[[function isMonster(x, y)
   local futureX = (Warlock.x/ gridMultiplier) + x
   local futureY = (Warlock.y / gridMultiplier) + y
 
@@ -107,3 +116,4 @@ function isMonster(x, y)
   end -- for loop
 
 end -- isMonster()
+]]
