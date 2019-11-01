@@ -85,11 +85,25 @@ end -- FOV()
 
 -- testMap function where tileCollision happens
 function testMap(x, y) -- should prolly make this less verbose
-  futureX = (Warlock.x/ gridMultiplier) + x
-  futureY = (Warlock.y / gridMultiplier) + y
+  local futureX = (Warlock.x/ gridMultiplier) + x
+  local futureY = (Warlock.y / gridMultiplier) + y
 
 	if map[futureX][futureY] == "#" then
 		return false
+  elseif isMonster(x, y) == true then
+    return false
   end
   return true
 end
+
+function isMonster(x, y)
+  local futureX = (Warlock.x/ gridMultiplier) + x
+  local futureY = (Warlock.y / gridMultiplier) + y
+
+  for actor in ipairs(actors) do
+  if futureX == (actors[actor].x / gridMultiplier) and futureY == (actors[actor].y / gridMultiplier) then
+  return true
+  end -- if
+  end -- for loop
+
+end -- isMonster()
