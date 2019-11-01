@@ -2,6 +2,7 @@ local class = require 'middleclass'
 require 'mapAndLighting'
 require 'miscSettingsAndFunctions'
 require 'actorAndPlayerClasses'
+require 'attackAction'
 astar = require 'astar'
 
 tempX = {}
@@ -11,8 +12,8 @@ monster = class('monster', actor)
 
 function monster:initialize(x, y)
 actor.initialize(self, x, y)
-self.nextToPlayer = nil
 self.name = nil
+self.damage = nil
 end
 
 function monster:takeAction()
@@ -51,13 +52,3 @@ actorMap[self.x / gridMultiplier][self.y / gridMultiplier] = "actor"
 end -- if statement
 
 end -- pathfinding()
-
---[[
-function monster:combat()
-if self.nextToPlayer == true then--
-Warlock.health = Warlock.health - 10 -- replace this with AttackAction:attack
-self:pathfinding()
-end
-
-end
-]]

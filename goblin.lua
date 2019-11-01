@@ -3,6 +3,7 @@ require 'mapAndLighting'
 require 'miscSettingsAndFunctions'
 require 'actorAndPlayerClasses'
 require 'monsterClass'
+require 'attackAction'
 astar = require 'astar'
 
 goblin = class('goblin', monster)
@@ -11,6 +12,7 @@ function goblin:initialize(x, y)
 monster.initialize(self, x, y)
 self.nextToPlayer = nil
 self.name = "goblin"
+self.damage = 10
 end
 
 function goblin:printToScreen()
@@ -19,7 +21,7 @@ end
 
 function goblin:combat()
 if self.nextToPlayer == true then--
-Warlock.health = Warlock.health - 10 -- replace this with AttackAction:attack when I make the action classes
+AttackAction:attack(self.damage) 
 self:pathfinding()
 end
 end -- goblin:combat()
