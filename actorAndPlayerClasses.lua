@@ -29,7 +29,7 @@ player = class('player', actor) -- player subclass
 function player:initialize(x, y)
 actor.initialize(self, x, y)
 self.name = "Warlock"
-self.health = 100
+self.health = 1000
 self.damage = 5
 end
 

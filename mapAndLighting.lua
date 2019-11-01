@@ -100,7 +100,7 @@ function testMap(x, y) -- should prolly make this less verbose
 
 	if map[futureX][futureY] == "#" then
 		return false
-  elseif actorMap[futureX][futureY] == "actor" then
+  elseif actorMap[futureX][futureY] == "actor" and futureX * gridMultiplier ~= Warlock.x and futureY * gridMultiplier ~= Warlock.y then
     AttackAction:attack(Warlock.name, Warlock.damage, futureX * gridMultiplier, futureY * gridMultiplier)
     return false -- combat function after this ?
   end
