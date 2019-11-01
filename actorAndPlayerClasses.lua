@@ -16,6 +16,7 @@ self.id = id
 self.health = nil
 self.nextToPlayer = nil
 self.name = nil
+self.damage = nil
 
 -- Add new actor to table of actors
     table.insert(actors, self)
@@ -29,6 +30,7 @@ function player:initialize(x, y)
 actor.initialize(self, x, y)
 self.name = "Warlock"
 self.health = 100
+self.damage = 5
 end
 
 function player:takeAction()

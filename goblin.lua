@@ -22,7 +22,7 @@ end
 
 function goblin:combat()
 if self.nextToPlayer == true then
-AttackAction:attack(self.name, self.damage)
+AttackAction:attack(self.name, self.damage, nil, nil)
 self:pathfinding()
 end
 end -- goblin:combat()

@@ -101,21 +101,8 @@ function testMap(x, y) -- should prolly make this less verbose
 	if map[futureX][futureY] == "#" then
 		return false
   elseif actorMap[futureX][futureY] == "actor" then
+    AttackAction:attack(Warlock.name, Warlock.damage, futureX * gridMultiplier, futureY * gridMultiplier)
     return false -- combat function after this ?
   end
   return true
 end
-
-
---[[function isMonster(x, y)
-  local futureX = (Warlock.x/ gridMultiplier) + x
-  local futureY = (Warlock.y / gridMultiplier) + y
-
-  for actor in ipairs(actors) do
-  if futureX == (actors[actor].x / gridMultiplier) and futureY == (actors[actor].y / gridMultiplier) then
-  return true
-  end -- if
-  end -- for loop
-
-end -- isMonster()
-]]
