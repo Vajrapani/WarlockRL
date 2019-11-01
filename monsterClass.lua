@@ -33,7 +33,7 @@ path = astar:find(mapWidth, mapHeight, {x = self.x/gridMultiplier, y = self.y/gr
 end
 
 function monster:printToScreen()
-love.graphics.print({{NormaliseRGB(203, 75, 22)}, "D"}, self.x, self.y)
+love.graphics.print({{NormaliseRGB(203, 75, 22)}, "M"}, self.x, self.y)
 end
 
 function monster:pathfinding()
@@ -56,8 +56,8 @@ end -- if statement
 end -- pathfinding()
 
 function monster:combat()
-if self.nextToPlayer == true then
-Warlock.health = Warlock.health - 10
+if self.nextToPlayer == true then--
+Warlock.health = Warlock.health - 10 -- replace this with AttackAction:attack
 self:pathfinding()
 end
 
