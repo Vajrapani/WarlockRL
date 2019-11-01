@@ -75,8 +75,8 @@ function player:getDecision()
     end
 
   elseif self.input == "kp5" then -- stay in place, pass a turn
-    if testMap(0, 0) == true then
-    end
+    --if testMap(0, 0) == true then
+    --end
 
   elseif self.input == "kp6" then -- right
     if testMap(1, 0) == true then
