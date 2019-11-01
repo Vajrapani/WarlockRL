@@ -1,4 +1,5 @@
 local class = require 'middleclass'
+require 'miscSettingsAndFunctions'
 
 AttackAction = class('AttackAction')
 
@@ -15,6 +16,7 @@ function AttackAction:attack(actor, damage, x, y)
   for actor in ipairs(actors) do
   if actors[actor].x == x and actors[actor].y == y then
   actors[actor].health = actors[actor].health - Warlock.damage
+  if actors[actor].health <= 0 then table.remove(actors, actor) ; actorMap[x / gridMultiplier][y / gridMultiplier] = "" end
   end -- if
   end -- for
 end -- if
