@@ -13,8 +13,9 @@ self.energy = 0
 self.energyThreshold = 1 -- increment -> do action -> decrement -> next actor
 self.input = nil
 self.id = id
-self.health = 100
+self.health = nil
 self.nextToPlayer = nil
+self.name = nil
 
 -- Add new actor to table of actors
     table.insert(actors, self)
@@ -26,6 +27,8 @@ player = class('player', actor) -- player subclass
 
 function player:initialize(x, y)
 actor.initialize(self, x, y)
+self.name = "Warlock"
+self.health = 100
 end
 
 function player:takeAction()

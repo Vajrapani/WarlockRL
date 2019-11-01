@@ -14,7 +14,8 @@ love.window.setTitle("WarlockRL")
 drunkWalk() -- Generates a cave-like map by using the drunk walk algorithm
 Warlock = player:new(Place()) -- Warlock is the player char
 monster1 = goblin:new(Place())
---monster2 = monster:new(Place())
+monster2 = goblin:new(Place())
+monster2 = goblin:new(Place())
 --monster3 = monster:new(Place())
 end
 

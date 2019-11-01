@@ -12,7 +12,8 @@ function goblin:initialize(x, y)
 monster.initialize(self, x, y)
 self.nextToPlayer = nil
 self.name = "goblin"
-self.damage = 10
+self.damage = 1
+self.health = 10
 end
 
 function goblin:printToScreen()
@@ -20,8 +21,8 @@ love.graphics.print({{NormaliseRGB(203, 75, 22)}, "g"}, self.x, self.y)
 end
 
 function goblin:combat()
-if self.nextToPlayer == true then--
-AttackAction:attack(self.damage) 
+if self.nextToPlayer == true then
+AttackAction:attack(self.name, self.damage)
 self:pathfinding()
 end
 end -- goblin:combat()

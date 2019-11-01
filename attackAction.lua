@@ -6,10 +6,8 @@ function AttackAction:initialize()
     self.name = 'AttackAction'
 end
 
-function AttackAction:attack(damage)
-for actor in ipairs(actors) do
-if actors[actor].nextToPlayer == true then
+function AttackAction:attack(actor, damage)
+  if actor ~= "Warlock" then
   Warlock.health = Warlock.health - damage
-end -- if
-end -- for
+  end
 end -- AttackAction:attack(damage)
