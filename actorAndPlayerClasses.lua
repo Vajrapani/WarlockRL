@@ -13,6 +13,7 @@ self.energy = 0
 self.energyThreshold = 1 -- increment -> do action -> decrement -> next actor
 self.input = nil
 self.id = id
+self.health = 100
 
 -- Add new actor to table of actors
     table.insert(actors, self)

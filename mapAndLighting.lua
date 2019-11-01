@@ -99,7 +99,7 @@ function testMap(x, y) -- should prolly make this less verbose
 	if map[futureX][futureY] == "#" then
 		return false
   elseif actorMap[futureX][futureY] == "actor" then
-    return false
+    return false -- combat function after this ?
   end
   return true
 end
