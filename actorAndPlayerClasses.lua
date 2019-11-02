@@ -38,6 +38,7 @@ self.energy = self.energy + 1
 
 if self.energy >= self.energyThreshold then
 self:getDecision()
+FOV()
 turncount = turncount + 1
 self.energy = self.energy - 1
 end
