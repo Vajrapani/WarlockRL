@@ -56,3 +56,12 @@ function drawActors()
     end
   end
 end
+
+function allActorsDoActions()
+  for actor in ipairs(actors) do
+
+            if actors[actor]:takeAction() == true then
+                break
+            end
+        end
+  end -- 
