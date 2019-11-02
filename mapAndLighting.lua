@@ -108,7 +108,7 @@ function LightupWalls()
       local y = j - (Warlock.y / gridMultiplier)
       local l = math.floor(math.sqrt((x*x) + (y*y)))
 
-      if l < 4 and map[i][j] == "#" then isVisible[i][j] = 1 end
+      if l < (Warlock.viewRadius/2) and map[i][j] == "#" then isVisible[i][j] = 1 end
     end
   end
 end
