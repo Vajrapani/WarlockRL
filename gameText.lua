@@ -1,2 +1,2 @@
-OpeningLines = [[You have made a blood pact with a demonic patron. Harvest the wretched souls that
-slither beneath the ground here to prove yourself worthy and be rewarded with power beyond your wildest dreams!]]
+OpeningLines = [[You have made a blood pact with a demonic entity. Harvest the souls that
+slither beneath the ground here to prove your worth and, in turn,  be rewarded with unimaginable power.]]
