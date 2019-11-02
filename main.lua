@@ -1,12 +1,14 @@
 local class = require 'middleclass'
 local Gamestate = require 'gamestate'
+astar = require 'astar'
 require 'miscSettingsAndFunctions' -- misc values and functions that are useful
 require 'mapAndLighting' -- anything to do with the map and lighting/FOV
+
 require 'actorAndPlayerClasses' -- actor superclass and player subclass
 require 'monsterClass'
 require 'goblin'
-astar = require 'astar'
 
+require 'gameText'
 -- ** GLOBALS **
 actors = {} -- table gets populated by the actor class as new ones are created
 game = {}
@@ -18,8 +20,8 @@ function menu:draw()
   love.graphics.setBackgroundColor(NormaliseRGB(0,43,54)) -- Solarized Base
   love.graphics.setFont(InconsolataRegular)
   love.graphics.printf({{NormaliseRGB(203, 75, 22)}, "* W A R L O C K *"}, 0, 0 , love.graphics.getWidth(), "center")
-  --love.graphics.print() -- put opening text here
-  love.graphics.print({{NormaliseRGB(203, 75, 22)}, "Press Enter to begin....."}, 10, 30)
+  love.graphics.printf({{NormaliseRGB(203, 75, 22)},  OpeningLines}, 0, 30 , love.graphics.getWidth() - 10, "center")
+  love.graphics.print({{NormaliseRGB(203, 75, 22)}, "Press Enter to begin....."}, 10, 100)
 end
 
 function menu:keyreleased(key, code)
