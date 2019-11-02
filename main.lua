@@ -34,7 +34,6 @@ end
 function love.keypressed(key)
 if key == "kp1" or "kp2" or "kp3" or "kp4" or "kp5" or "kp6" or "kp7" or "kp8" or "kp9" then -- only numpad
   Warlock.input = key
-  --if Warlock:getDecision() ~= false then
   for actor in ipairs(actors) do
 
             if actors[actor]:takeAction() == true then
@@ -42,5 +41,4 @@ if key == "kp1" or "kp2" or "kp3" or "kp4" or "kp5" or "kp6" or "kp7" or "kp8" o
             end
         end
   end -- end of if key statement
---end
 end-- keypressed()
