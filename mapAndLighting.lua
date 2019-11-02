@@ -88,7 +88,7 @@ function FOV()
       local y = j - (Warlock.y / gridMultiplier)
       local l = math.floor(math.sqrt((x*x) + (y*y)))
 
-      if (l < Warlock.viewRadius) --[[and map[i][j] ~= "#"]] then
+      if (l < Warlock.viewRadius) then
         isVisible[i][j] = 1 -- 1 = visible
     end
   end
