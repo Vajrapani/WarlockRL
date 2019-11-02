@@ -30,15 +30,15 @@ function game:draw()
   UserInterface()
 end
 
-function love.load()
-love.window.setTitle("WarlockRL")
-Gamestate.registerEvents()
-Gamestate.switch(game)
-end
-
-function love.keypressed(key)
+function game:keypressed(key)
 if key == "kp1" or "kp2" or "kp3" or "kp4" or "kp5" or "kp6" or "kp7" or "kp8" or "kp9" then -- only numpad
   Warlock.input = key
   allActorsDoActions()
 end
 end-- keypressed()
+
+function love.load()
+love.window.setTitle("WarlockRL")
+Gamestate.registerEvents()
+Gamestate.switch(game)
+end
