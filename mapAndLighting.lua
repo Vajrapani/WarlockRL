@@ -14,12 +14,14 @@ mapGen = false -- while this is false, the map should gen
 mapWidth = 35 -- x
 mapHeight = 35 -- y
 
+function makeMap()
 for x=1, mapWidth do -- makes a map full of walls, before a map generator iterates through it
   for y=1, mapHeight do
     map[x] = map[x] or {}
     map[x][y] = "#"
   end
 end
+end --
 
 for x=1, mapWidth do -- sets the map to be all initially not visible.
   for y=1, mapHeight do

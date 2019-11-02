@@ -13,6 +13,7 @@ game = {}
 turncount = 0
 
 function game:enter()
+  makeMap()
   drunkWalk() -- Generates a cave-like map by using the drunk walk algorithm
   Warlock = player:new(Place()) -- Warlock is the player char
   monster1 = goblin:new(Place())
