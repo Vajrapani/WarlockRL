@@ -25,7 +25,7 @@ end
 end -- takeAction()
 
 function monster:getDecision() -- if monster is visible move towards player, else stay in place?
-if isVisible[self.x / gridMultiplier][self.y /gridMultiplier] == 1 and self:calcDist(Warlock.x, Warlock.y, self.x, self.y) >= self.viewRadius then
+if isVisible[self.x / gridMultiplier][self.y /gridMultiplier] == 1 and self:calcDist(Warlock.x, Warlock.y, self.x, self.y) <= self.viewRadius then
 self:pathfinding()
 self:combat()
 end
@@ -55,8 +55,8 @@ end -- if statement
 end -- pathfinding()
 
 function monster:calcDist(px, py, mx, my)
-  local x = (mx - px)
-  local y = (my - py)
+  local x = (mx/gridMultiplier - px/gridMultiplier)
+  local y = (my/gridMultiplier - py/gridMultiplier)
   local l = math.floor(math.sqrt((x*x) + (y*y)))
   return l
 end
