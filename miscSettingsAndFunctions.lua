@@ -38,10 +38,21 @@ function positionIsOpenFunc (x, y)
 end --positionIsOpenFunc()
 
 
-function UI()
+function UserInterface()
   love.graphics.setFont(InconsolataRegular)
   love.graphics.print({{NormaliseRGB(203, 75, 22)}, "[ W A R L O C K ]"}, 37 * gridMultiplier, 1 * gridMultiplier)
-  love.graphics.print({{NormaliseRGB(203, 75, 22)}, "[ Turncount ] : " .. turncount}, 37 * gridMultiplier, 3 * gridMultiplier)
-  love.graphics.print({{NormaliseRGB(203, 75, 22)}, "[ Warlock Health ] : " .. Warlock.health}, 37 * gridMultiplier, 5 * gridMultiplier)
-  love.graphics.print({{NormaliseRGB(203, 75, 22)}, "[ Monster Health ] : " .. monster1.health}, 37 * gridMultiplier, 7 * gridMultiplier)
+  love.graphics.print({{NormaliseRGB(203, 75, 22)}, "[ Turncount ] : " .. turncount}, 37 * gridMultiplier, 5 * gridMultiplier)
+  love.graphics.print({{NormaliseRGB(203, 75, 22)}, "[ Health ] : " .. Warlock.health}, 37 * gridMultiplier, 3 * gridMultiplier)
+  --love.graphics.print({{NormaliseRGB(203, 75, 22)}, "[ Monster Health ] : " .. monster1.health}, 37 * gridMultiplier, 7 * gridMultiplier)
+end
+
+function drawActors()
+  for actor in ipairs(actors) do -- print out all active actors
+    if actors[actor].id == 1 then actors[actor]:printToScreen()
+    elseif actors[actor].id > 1 then
+    if isVisible[actors[actor].x / gridMultiplier][actors[actor].y / gridMultiplier] == 1 then
+      actors[actor]:printToScreen()
+    end
+    end
+  end
 end

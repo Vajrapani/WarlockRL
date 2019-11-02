@@ -26,15 +26,8 @@ function love.draw()
   love.graphics.setBackgroundColor(NormaliseRGB(0,43,54)) -- Solarized Base
   love.graphics.setFont(InconsolataBold)
   drawMap()
-  for actor in ipairs(actors) do -- print out all active actors
-    if actors[actor].id == 1 then actors[actor]:printToScreen()
-    elseif actors[actor].id > 1 then
-    if isVisible[actors[actor].x / gridMultiplier][actors[actor].y / gridMultiplier] == 1 then
-      actors[actor]:printToScreen()
-    end
-    end
-  end
-  UI()
+  drawActors()
+  UserInterface()
 end
 
 
