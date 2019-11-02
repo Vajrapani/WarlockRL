@@ -38,10 +38,10 @@ end
 function drawMap()
   for x=1, mapWidth do
     for y=1, mapHeight do
-      --if isVisible[x][y] == 1 then
+      if isVisible[x][y] == 1 then
       if actorMap[x][y] == "actor" then love.graphics.print({{NormaliseRGB(220, 50, 47)}, ""}, x * gridMultiplier , y * gridMultiplier)
       else love.graphics.print({{NormaliseRGB(220, 50, 47)}, map[x][y]}, x * gridMultiplier , y * gridMultiplier) -- 2 less than size of font
-    --end
+    end
   end
   end
 end

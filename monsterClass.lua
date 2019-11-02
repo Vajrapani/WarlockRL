@@ -25,8 +25,10 @@ end
 end -- takeAction()
 
 function monster:getDecision() -- currently monster will just move towards player
+if isVisible[self.x / gridMultiplier][self.y /gridMultiplier] == 1 then
 self:pathfinding()
 self:combat()
+end
 end -- getDecision()
 
 function monster:requestPath() -- generate A* star path from current actor (x,y) to player (x,y)
