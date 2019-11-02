@@ -88,16 +88,31 @@ function FOV()
       local x = i - (Warlock.x / gridMultiplier)
       local y = j - (Warlock.y / gridMultiplier)
       local l = math.floor(math.sqrt((x*x) + (y*y)))
-
+        if l < Warlock.viewRadius then
         if bresenham.los(i, j, Warlock.x/gridMultiplier, Warlock.y/gridMultiplier, function(x, y)
-        if (l > Warlock.viewRadius) then return false end return true end) then
+        if (map[x][y] == "#") then return false end return true end) == true then
         isVisible[i][j] = 1 -- 1 = visible
       end
     end
   end
-
+end
+LightupWalls()
 end -- FOV()
 
+-- Light Walls in the player's view radius
+
+function LightupWalls()
+  for i=1, mapWidth do
+    for j=1, mapHeight do
+      local x = i - (Warlock.x / gridMultiplier)
+      local y = j - (Warlock.y / gridMultiplier)
+      local l = math.floor(math.sqrt((x*x) + (y*y)))
+
+      if l < 4 and map[i][j] == "#" then isVisible[i][j] = 1 end
+    end
+  end
+end
+--
 
 -- testMap function where tileCollision happens
 function testMap(x, y) -- should prolly make this less verbose
