@@ -1,4 +1,5 @@
 require 'miscSettingsAndFunctions'
+local bresenham = require 'bresenham'
 --[[
 # = wall
 . = ground
@@ -88,12 +89,15 @@ function FOV()
       local y = j - (Warlock.y / gridMultiplier)
       local l = math.floor(math.sqrt((x*x) + (y*y)))
 
-      if (l < Warlock.viewRadius) then
+        if bresenham.los(i, j, Warlock.x/gridMultiplier, Warlock.y/gridMultiplier, function(x, y)
+        if (l > Warlock.viewRadius) then return false end return true end) then
         isVisible[i][j] = 1 -- 1 = visible
+      end
     end
   end
-end
+
 end -- FOV()
+
 
 -- testMap function where tileCollision happens
 function testMap(x, y) -- should prolly make this less verbose
