@@ -16,8 +16,10 @@ turncount = 0
 
 function menu:draw()
   love.graphics.setBackgroundColor(NormaliseRGB(0,43,54)) -- Solarized Base
-  love.graphics.setFont(InconsolataBold)
-  love.graphics.print("Press Enter to continue", 10, 10)
+  love.graphics.setFont(InconsolataRegular)
+  love.graphics.printf({{NormaliseRGB(203, 75, 22)}, "* W A R L O C K *"}, 0, 0 , love.graphics.getWidth(), "center")
+  --love.graphics.print() -- put opening text here
+  love.graphics.print({{NormaliseRGB(203, 75, 22)}, "Press Enter to begin....."}, 10, 30)
 end
 
 function menu:keyreleased(key, code)
