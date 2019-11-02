@@ -19,7 +19,6 @@ monster1 = goblin:new(Place())
 end
 
 function love.update(dt)
-  FOV()
 end
 
 function love.draw()
