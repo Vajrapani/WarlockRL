@@ -36,7 +36,7 @@ self.maxHealth = 20
 self.health = 20
 self.healthFlasks = 1
 
-self.baseDamage = 5
+self.baseDamage = 3
 self.damage = self.baseDamage + Weapon.damageModifier
 end
 
