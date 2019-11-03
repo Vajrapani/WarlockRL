@@ -10,6 +10,7 @@ end
 function AttackAction:attack(actor, damage, x, y)
   if actor ~= "Warlock" then
   Warlock.health = Warlock.health - damage
+  Warlock.isInCombat = true
   end
 
   if actor == "Warlock" then
