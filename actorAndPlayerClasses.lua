@@ -35,9 +35,11 @@ self.name = "Warlock"
 self.maxHealth = 20
 self.health = 20
 self.healthFlasks = 1
+self.soulPower = 0
 
 self.baseDamage = 3
 self.damage = self.baseDamage + Weapon.damageModifier
+self.isInCombat = false
 end
 
 function player:takeAction()
@@ -46,6 +48,8 @@ self.energy = self.energy + 1
 if self.energy >= self.energyThreshold then
 self:getDecision()
 FOV()
+self:checkIfPlayerIsInCombat()
+self:soulPowerdepletion()
 turncount = turncount + 1
 self.energy = self.energy - 1
 end
@@ -126,3 +130,19 @@ else return false -- if player presses a button not on here, the turn doesn't pr
 function player:printToScreen()
 love.graphics.print({{NormaliseRGB(203, 75, 22)}, "@"}, self.x, self.y)
 end
+
+function player:checkIfPlayerIsInCombat()
+for actor in ipairs(actors) do
+if actors[actor].id > 1 and isVisible[actors[actor].x / gridMultiplier][actors[actor].y / gridMultiplier] ~= 1 then
+  self.isInCombat = false
+elseif actors[actor].id > 1 and isVisible[actors[actor].x / gridMultiplier][actors[actor].y / gridMultiplier] == 1 then
+  self.isInCombat = true
+elseif #actors == 1 then
+  self.isInCombat = false
+end
+end
+end -- checkIfPlayerIsInCombat()
+
+function player:soulPowerdepletion()
+if self.isInCombat == false then if Warlock.soulPower > 0 then Warlock.soulPower = Warlock.soulPower - 1 end end
+end -- soulPowerdepletion()
