@@ -87,7 +87,7 @@ end -- drunkWalk()
 function FOV()
   for i=1, mapWidth do
     for j=1, mapHeight do
-      if isVisible[i][j] == 1 then isVisible[i][j] = 0 end -- 0 = not visible, populate table first
+      if isVisible[i][j] == 1 then isVisible[i][j] = 2 end -- 0 = not visible, populate table first
       local x = i - (Warlock.x / gridMultiplier)
       local y = j - (Warlock.y / gridMultiplier)
       local l = math.floor(math.sqrt((x*x) + (y*y)))
