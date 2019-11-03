@@ -25,7 +25,7 @@ end
 end -- takeAction()
 
 function monster:getDecision() -- if monster is visible move towards player if distance is less than 8, else stay in place?
-if isVisible[self.x / gridMultiplier][self.y /gridMultiplier] == 1 and self:calcDist(Warlock.x, Warlock.y, self.x, self.y) <= self.viewRadius then
+if --[[isVisible[self.x / gridMultiplier][self.y /gridMultiplier] == 1 and ]]self:calcDist(Warlock.x, Warlock.y, self.x, self.y) <= self.viewRadius then
 self:pathfinding()
 self:combat()
 end
