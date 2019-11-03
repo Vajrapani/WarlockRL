@@ -27,7 +27,7 @@ end --
 for x=1, mapWidth do -- sets the map to be all initially not visible.
   for y=1, mapHeight do
     isVisible[x] = isVisible[x] or {}
-    isVisible[x][y] = "0"
+    isVisible[x][y] = 0
   end
 end
 
@@ -46,8 +46,9 @@ function drawMap()
       else love.graphics.print({{NormaliseRGB(220, 50, 47)}, map[x][y]}, x * gridMultiplier , y * gridMultiplier) -- 2 less than size of font
     end
   end
-  end
-end
+    if isVisible[x][y] == 2 then love.graphics.print({{NormaliseRGB(88, 110, 117)}, map[x][y]}, x * gridMultiplier , y * gridMultiplier) end
+end -- end of 1st for
+end -- end of 2nd for
 end -- drawMap
 
 -- Drunk Walk Algorithm. Replace/Refactor at some point
@@ -84,7 +85,7 @@ end -- drunkWalk()
 function FOV()
   for i=1, mapWidth do
     for j=1, mapHeight do
-      --isVisible[i][j] = 0 -- 0 = not visible, populate table first
+      if isVisible[i][j] < 1 then isVisible[i][j] = 0 end -- 0 = not visible, populate table first
       local x = i - (Warlock.x / gridMultiplier)
       local y = j - (Warlock.y / gridMultiplier)
       local l = math.floor(math.sqrt((x*x) + (y*y)))
@@ -97,6 +98,7 @@ function FOV()
   end
 end
 LightupWalls()
+rememberedTiles()
 end -- FOV()
 
 -- Light Walls in the player's view radius
@@ -113,6 +115,18 @@ function LightupWalls()
   end
 end
 --
+
+function rememberedTiles()
+  for i=1, mapWidth do
+    for j=1, mapHeight do
+      local x = i - (Warlock.x / gridMultiplier)
+      local y = j - (Warlock.y / gridMultiplier)
+      local l = math.floor(math.sqrt((x*x) + (y*y)))
+
+      if l > (Warlock.viewRadius) and isVisible[i][j] ~= 0 then isVisible[i][j] = 2 end
+    end
+  end
+end
 
 -- testMap function where tileCollision happens
 function testMap(x, y) -- should prolly make this less verbose
