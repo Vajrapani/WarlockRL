@@ -1,6 +1,7 @@
 local class = require 'middleclass'
 require 'mapAndLighting'
 require 'miscSettingsAndFunctions'
+require 'healAction'
 
 actor = class('actor') -- actor class
 id = 1
@@ -110,6 +111,9 @@ function player:getDecision()
     Warlock.y = Warlock.y - gridMultiplier
     actorMap[self.x / gridMultiplier][self.y / gridMultiplier] = "actor"
   end
+
+elseif self.input == "h" then
+  HealAction:playerHeal()
 else return false -- if player presses a button not on here, the turn doesn't progress
   end -- end of big if statement with the numpad buttons
 
