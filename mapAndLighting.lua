@@ -47,6 +47,8 @@ function drawMap()
     end
   end
     if isVisible[x][y] == 2 then love.graphics.print({{NormaliseRGB(88, 110, 117)}, map[x][y]}, x * gridMultiplier , y * gridMultiplier) end
+    if isVisible[x][y] == 3 and map[x][y] == "#" then love.graphics.print({{NormaliseRGB(108, 113, 196)}, map[x][y]}, x * gridMultiplier , y * gridMultiplier) end
+    if isVisible[x][y] == 3 and map[x][y] == "." then love.graphics.print({{NormaliseRGB(88, 110, 117)}, map[x][y]}, x * gridMultiplier , y * gridMultiplier) end
 end -- end of 1st for
 end -- end of 2nd for
 end -- drawMap
@@ -91,13 +93,13 @@ function FOV()
       local l = math.floor(math.sqrt((x*x) + (y*y)))
         if l < Warlock.viewRadius then
         if bresenham.los(i, j, Warlock.x/gridMultiplier, Warlock.y/gridMultiplier, function(x, y)
-        if (map[x][y] == "#") then return false end return true end) == true then
+        if (map[x][y] == "#") then isVisible[i][j] = 3 ;  return false end return true end) == true then
         isVisible[i][j] = 1 -- 1 = visible
       end
     end
   end
 end
-LightupWalls()
+--LightupWalls()
 rememberedTiles()
 end -- FOV()
 
