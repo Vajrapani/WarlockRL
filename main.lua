@@ -23,7 +23,7 @@ function menu:draw()
   love.graphics.setFont(InconsolataRegular)
   love.graphics.printf({{NormaliseRGB(203, 75, 22)}, "* W A R L O C K *"}, 0, 0 , love.graphics.getWidth(), "center")
   love.graphics.printf({{NormaliseRGB(203, 75, 22)},  OpeningLines}, 0, 30 , love.graphics.getWidth() - 10, "center")
-  love.graphics.print({{NormaliseRGB(203, 75, 22)}, "Press Enter to begin....."}, 10, 100)
+  --love.graphics.print({{NormaliseRGB(203, 75, 22)}, "Press Enter to begin....."}, 10, 100)
 end
 
 function menu:keyreleased(key, code)
