@@ -43,11 +43,11 @@ function drawMap()
     for y=1, mapHeight do
       if isVisible[x][y] == 1 then
       if actorMap[x][y] == "actor" then love.graphics.print({{NormaliseRGB(220, 50, 47)}, ""}, x * gridMultiplier , y * gridMultiplier)
-      else love.graphics.print({{NormaliseRGB(220, 50, 47)}, map[x][y]}, x * gridMultiplier , y * gridMultiplier) -- 2 less than size of font
+      else love.graphics.print({{NormaliseRGB(181, 137, 0)}, map[x][y]}, x * gridMultiplier , y * gridMultiplier) -- 2 less than size of font
     end
   end
     if isVisible[x][y] == 2 then love.graphics.print({{NormaliseRGB(88, 110, 117)}, map[x][y]}, x * gridMultiplier , y * gridMultiplier) end
-    if isVisible[x][y] == 3 and map[x][y] == "#" then love.graphics.print({{NormaliseRGB(108, 113, 196)}, map[x][y]}, x * gridMultiplier , y * gridMultiplier) end
+    if isVisible[x][y] == 3 and map[x][y] == "#" then love.graphics.print({{NormaliseRGB(220, 50, 47)}, map[x][y]}, x * gridMultiplier , y * gridMultiplier) end
     if isVisible[x][y] == 3 and map[x][y] == "." then love.graphics.print({{NormaliseRGB(88, 110, 117)}, map[x][y]}, x * gridMultiplier , y * gridMultiplier) end
 end -- end of 1st for
 end -- end of 2nd for
