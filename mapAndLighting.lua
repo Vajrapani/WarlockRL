@@ -138,8 +138,12 @@ local right = map[x+1][y+0]
 local left = map[x-1][y-0]
 local down = map[x+0][y+1]
 local up = map[x+0][y-1] -- 4 directions
+local lowerRight = map[x+1][y+1]
+local lowerLeft = map[x-1][y+1]
+local upperRight = map[x+1][y-1]
+local upperLeft = map[x-1][y-1]
 
-if right == "." or left == "." or down == "." or up == "." then return true else return false end
+if right == "." or left == "." or down == "." or up == "." or lowerRight == "." or lowerLeft == "." or upperRight == "." or upperLeft == "." then return true else return false end
 end
 
 -- testMap function where tileCollision happens
