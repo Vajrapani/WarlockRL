@@ -2,6 +2,7 @@ local class = require 'middleclass'
 local Gamestate = require 'gamestate'
 astar = require 'astar'
 require 'miscSettingsAndFunctions' -- misc values and functions that are useful
+require 'userInterfaceFunctions'
 require 'mapAndLighting' -- anything to do with the map and lighting/FOV
 
 require 'actorAndPlayerClasses' -- actor superclass and player subclass
