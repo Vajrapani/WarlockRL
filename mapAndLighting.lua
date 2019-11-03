@@ -93,7 +93,7 @@ function FOV()
       local l = math.floor(math.sqrt((x*x) + (y*y)))
         if l < Warlock.viewRadius then
         if bresenham.los(i, j, Warlock.x/gridMultiplier, Warlock.y/gridMultiplier, function(x, y)
-        if (map[x][y] == "#") then isVisible[i][j] = 3 ;  return false end return true end) == true then
+        if (map[x][y] == "#") then isVisible[x][y] = 3 ;  return false end return true end) == true then
         isVisible[i][j] = 1 -- 1 = visible
       end
     end
