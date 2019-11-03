@@ -125,7 +125,7 @@ function LightUpAdjacentWalls()
       local y = j - (Warlock.y / gridMultiplier)
       local l = math.floor(math.sqrt((x*x) + (y*y)))
 
-      if l < Warlock.viewRadius then
+      if l < (Warlock.viewRadius/2) then
         if map[i][j] == "#" and checkAdjacent(i, j) == true then isVisible[i][j] = 3 end
       end
     end
