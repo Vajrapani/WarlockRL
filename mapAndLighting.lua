@@ -99,24 +99,9 @@ function FOV()
     end
   end
 end
---LightupWalls()
 rememberedTiles()
 end -- FOV()
 
--- Light Walls in the player's view radius
-
-function LightupWalls()
-  for i=1, mapWidth do
-    for j=1, mapHeight do
-      local x = i - (Warlock.x / gridMultiplier)
-      local y = j - (Warlock.y / gridMultiplier)
-      local l = math.floor(math.sqrt((x*x) + (y*y)))
-
-      if l < (Warlock.viewRadius/2) and map[i][j] == "#" then isVisible[i][j] = 1 end
-    end
-  end
-end
---
 
 function rememberedTiles()
   for i=1, mapWidth do
