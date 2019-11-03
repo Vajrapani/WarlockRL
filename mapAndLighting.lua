@@ -87,22 +87,23 @@ end -- drunkWalk()
 function FOV()
   for i=1, mapWidth do
     for j=1, mapHeight do
-      if isVisible[i][j] < 1 then isVisible[i][j] = 0 end -- 0 = not visible, populate table first
+      if isVisible[i][j] == 1 then isVisible[i][j] = 0 end -- 0 = not visible, populate table first
       local x = i - (Warlock.x / gridMultiplier)
       local y = j - (Warlock.y / gridMultiplier)
       local l = math.floor(math.sqrt((x*x) + (y*y)))
         if l < Warlock.viewRadius then
         if bresenham.los(i, j, Warlock.x/gridMultiplier, Warlock.y/gridMultiplier, function(x, y)
-        if (map[x][y] == "#") then isVisible[i][j] = 3 ;  return false end return true end) == true then
+        if (map[x][y] == "#") then --[[isVisible[i][j] = 3 ;--]] return false end return true end) == true then
         isVisible[i][j] = 1 -- 1 = visible
       end
     end
   end
 end
+LightUpAdjacentWalls()
 rememberedTiles()
 end -- FOV()
 
-
+-- greys out seen tiles
 function rememberedTiles()
   for i=1, mapWidth do
     for j=1, mapHeight do
@@ -110,9 +111,35 @@ function rememberedTiles()
       local y = j - (Warlock.y / gridMultiplier)
       local l = math.floor(math.sqrt((x*x) + (y*y)))
 
-      if l > (Warlock.viewRadius) and isVisible[i][j] ~= 0 then isVisible[i][j] = 2 end
+      if l > (Warlock.viewRadius) and isVisible[i][j] ~= 0  then isVisible[i][j] = 2 end
     end
   end
+end
+--
+
+-- checks if walls in the player's view radius are adjacent to a floor tile
+function LightUpAdjacentWalls()
+  for i=2, mapWidth-1 do
+    for j=2, mapHeight-1 do
+      local x = i - (Warlock.x / gridMultiplier)
+      local y = j - (Warlock.y / gridMultiplier)
+      local l = math.floor(math.sqrt((x*x) + (y*y)))
+
+      if l < Warlock.viewRadius then
+        if map[i][j] == "#" and checkAdjacent(i, j) == true then isVisible[i][j] = 3 end
+      end
+    end
+  end
+end -- LightUpAdjacentWalls()
+--
+
+function checkAdjacent(x, y)
+local right = map[x+1][y+0]
+local left = map[x-1][y-0]
+local down = map[x+0][y+1]
+local up = map[x+0][y-1] -- 4 directions
+
+if right == "." or left == "." or down == "." or up == "." then return true else return false end
 end
 
 -- testMap function where tileCollision happens
