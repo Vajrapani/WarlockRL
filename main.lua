@@ -14,6 +14,7 @@ require 'gameText'
 actors = {} -- table gets populated by the actor class as new ones are created
 game = {}
 menu = {}
+weapon = {}
 turncount = 0
 
 
@@ -35,6 +36,7 @@ end
 function game:enter()
   makeMap()
   drunkWalk() -- Generates a cave-like map by using the drunk walk algorithm
+  Feyblade = Feyblade:new()
   Warlock = player:new(Place()) -- Warlock is the player char
   monster1 = goblin:new(Place())
   monster2 = goblin:new(Place())

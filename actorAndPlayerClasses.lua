@@ -2,6 +2,7 @@ local class = require 'middleclass'
 require 'mapAndLighting'
 require 'miscSettingsAndFunctions'
 require 'healAction'
+require 'Weapon'
 
 actor = class('actor') -- actor class
 id = 1
@@ -30,10 +31,13 @@ player = class('player', actor) -- player subclass
 function player:initialize(x, y)
 actor.initialize(self, x, y)
 self.name = "Warlock"
+
 self.maxHealth = 20
 self.health = 20
 self.healthFlasks = 1
-self.damage = 5
+
+self.baseDamage = 5
+self.damage = self.baseDamage + Weapon.damageModifier
 end
 
 function player:takeAction()
