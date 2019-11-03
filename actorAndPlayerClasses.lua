@@ -31,6 +31,7 @@ actor.initialize(self, x, y)
 self.name = "Warlock"
 self.maxHealth = 20
 self.health = 20
+self.healthFlasks = 1
 self.damage = 5
 end
 
