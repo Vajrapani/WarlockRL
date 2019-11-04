@@ -16,8 +16,8 @@ mapWidth = 35 -- x
 mapHeight = 35 -- y
 
 function makeMap()
-for x=1, mapWidth do -- makes a map full of walls, before a map generator iterates through it
-  for y=1, mapHeight do
+for x=0, mapWidth+1 do -- makes a map full of walls, before a map generator iterates through it
+  for y=0, mapHeight+1 do -- REMEMBER : a '0' row and column is made, along with an extra one at the max val
     map[x] = map[x] or {}
     map[x][y] = "#"
   end
@@ -87,19 +87,16 @@ end -- drunkWalk()
 function FOV()
   for i=1, mapWidth do
     for j=1, mapHeight do
-      if isVisible[i][j] == 1 then isVisible[i][j] = 2 end -- 0 = not visible, populate table first
+      if isVisible[i][j] == 1 then isVisible[i][j] = 2 end 
       local x = i - (Warlock.x / gridMultiplier)
       local y = j - (Warlock.y / gridMultiplier)
       local l = math.floor(math.sqrt((x*x) + (y*y)))
         if l < Warlock.viewRadius then
-        if bresenham.los(i, j, Warlock.x/gridMultiplier, Warlock.y/gridMultiplier, function(x, y)
-        if (map[x][y] == "#") then --[[isVisible[i][j] = 3 ;--]] return false end return true end) == true then
-        isVisible[i][j] = 1 -- 1 = visible
-      end
+        bresenham.los(i, j, Warlock.x/gridMultiplier, Warlock.y/gridMultiplier, function(x, y)
+        if (map[x][y] == "#") then if checkAdjacent(x, y) == true then isVisible[i][j] = 3 end  return false end isVisible[i][j] = 1 return true end)
     end
   end
 end
-LightUpAdjacentWalls()
 rememberedTiles()
 end -- FOV()
 
@@ -118,6 +115,7 @@ end
 --
 
 -- checks if walls in the player's view radius are adjacent to a floor tile
+--[[
 function LightUpAdjacentWalls()
   for i=2, mapWidth-1 do
     for j=2, mapHeight-1 do
@@ -132,8 +130,9 @@ function LightUpAdjacentWalls()
   end
 end -- LightUpAdjacentWalls()
 --
-
+]]
 function checkAdjacent(x, y)
+
 local right = map[x+1][y+0]
 local left = map[x-1][y-0]
 local down = map[x+0][y+1]
