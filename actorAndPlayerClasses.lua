@@ -38,7 +38,7 @@ self.healthFlasks = 1
 self.soulPower = 0
 
 self.baseDamage = 3
-self.damage = self.baseDamage + Weapon.damageModifier + self.soulPower
+self.damage = self.baseDamage + Weapon.damageModifier + (self.soulPower * 10)
 self.isInCombat = nil
 end
 
@@ -49,11 +49,16 @@ if self.energy >= self.energyThreshold then
 self:getDecision()
 FOV()
 self:soulPowerdepletion()
+self:updateDamage()
 self:checkIfPlayerIsInCombat()
 turncount = turncount + 1
 self.energy = self.energy - 1
 end
 end -- takeAction()
+
+function player:updateDamage()
+self.damage = self.baseDamage + Weapon.damageModifier + (self.soulPower * 10)
+end
 
 function player:getDecision()
   if self.input == "kp1" then -- lower left diagonal
