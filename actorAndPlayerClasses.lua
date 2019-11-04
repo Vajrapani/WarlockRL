@@ -38,7 +38,7 @@ self.healthFlasks = 1
 self.soulPower = 0
 
 self.baseDamage = 3
-self.damage = self.baseDamage + Weapon.damageModifier + (self.soulPower * 10)
+self.damage = self.baseDamage + Weapon.damageModifier + (self.soulPower * 2)
 self.isInCombat = nil
 end
 
@@ -57,7 +57,7 @@ end
 end -- takeAction()
 
 function player:updateDamage()
-self.damage = self.baseDamage + Weapon.damageModifier + (self.soulPower * 10)
+self.damage = self.baseDamage + Weapon.damageModifier + (self.soulPower * 2)
 end
 
 function player:getDecision()

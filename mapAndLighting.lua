@@ -95,7 +95,7 @@ function FOV()
         if bresenham.los(i, j, Warlock.x/gridMultiplier, Warlock.y/gridMultiplier, function(x, y)
         if (map[x][y] == "#") then return false end return true end) == true then isVisible[i][j] = 1 end
 
-        if map[i][j] == "#" then if checkAdjacent(i, j) == true then isVisible[i][j] = 3 end end
+        if map[i][j] == "#" then if checkAdjacent(i, j) == true then isVisible[i][j] = 2 end end
 
     end
   end
