@@ -38,7 +38,7 @@ self.healthFlasks = 1
 self.soulPower = 0
 
 self.baseDamage = 3
-self.damage = self.baseDamage + Weapon.damageModifier
+self.damage = self.baseDamage + Weapon.damageModifier + self.soulPower
 self.isInCombat = nil
 end
 
