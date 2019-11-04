@@ -24,8 +24,8 @@ for x=0, mapWidth+1 do -- makes a map full of walls, before a map generator iter
 end
 end --
 
-for x=1, mapWidth do -- sets the map to be all initially not visible.
-  for y=1, mapHeight do
+for x=0, mapWidth+1 do -- sets the map to be all initially not visible.
+  for y=0, mapHeight+1 do
     isVisible[x] = isVisible[x] or {}
     isVisible[x][y] = 0
   end
@@ -92,8 +92,11 @@ function FOV()
       local y = j - (Warlock.y / gridMultiplier)
       local l = math.floor(math.sqrt((x*x) + (y*y)))
         if l < Warlock.viewRadius then
-        bresenham.los(i, j, Warlock.x/gridMultiplier, Warlock.y/gridMultiplier, function(x, y)
-        if (map[x][y] == "#") then if checkAdjacent(x, y) == true then isVisible[i][j] = 2 end  return false end isVisible[i][j] = 1 return true end)
+        if bresenham.los(i, j, Warlock.x/gridMultiplier, Warlock.y/gridMultiplier, function(x, y)
+        if (map[x][y] == "#") then return false end return true end) == true then isVisible[i][j] = 1 end
+
+        if map[i][j] == "#" then if checkAdjacent(i, j) == true then isVisible[i][j] = 3 end end
+
     end
   end
 end
@@ -134,16 +137,16 @@ end -- LightUpAdjacentWalls()
 ]]
 function checkAdjacent(x, y)
 
-local right = map[x+1][y+0]
-local left = map[x-1][y-0]
-local down = map[x+0][y+1]
-local up = map[x+0][y-1] -- 4 directions
-local lowerRight = map[x+1][y+1]
-local lowerLeft = map[x-1][y+1]
-local upperRight = map[x+1][y-1]
-local upperLeft = map[x-1][y-1]
+local right = isVisible[x+1][y+0]
+local left = isVisible[x-1][y-0]
+local down = isVisible[x+0][y+1]
+local up = isVisible[x+0][y-1] -- 4 directions
+local lowerRight = isVisible[x+1][y+1]
+local lowerLeft = isVisible[x-1][y+1]
+local upperRight = isVisible[x+1][y-1]
+local upperLeft = isVisible[x-1][y-1]
 
-if right == "." or left == "." or down == "." or up == "." or lowerRight == "." or lowerLeft == "." or upperRight == "." or upperLeft == "." then return true else return false end
+if right == 1 or left == 1 or down == 1 or up == 1 or lowerRight == 1 or lowerLeft == 1 or upperRight == 1 or upperLeft == 1 then return true else return false end
 end
 
 -- testMap function where tileCollision happens
