@@ -87,18 +87,19 @@ end -- drunkWalk()
 function FOV()
   for i=1, mapWidth do
     for j=1, mapHeight do
-      if isVisible[i][j] == 1 then isVisible[i][j] = 2 end 
+      if isVisible[i][j] == 1 then isVisible[i][j] = 2 end
       local x = i - (Warlock.x / gridMultiplier)
       local y = j - (Warlock.y / gridMultiplier)
       local l = math.floor(math.sqrt((x*x) + (y*y)))
         if l < Warlock.viewRadius then
         bresenham.los(i, j, Warlock.x/gridMultiplier, Warlock.y/gridMultiplier, function(x, y)
-        if (map[x][y] == "#") then if checkAdjacent(x, y) == true then isVisible[i][j] = 3 end  return false end isVisible[i][j] = 1 return true end)
+        if (map[x][y] == "#") then if checkAdjacent(x, y) == true then isVisible[i][j] = 2 end  return false end isVisible[i][j] = 1 return true end)
     end
   end
 end
 rememberedTiles()
 end -- FOV()
+-- change the wall lighting colour to 3 if you want them to be red again
 
 -- greys out seen tiles
 function rememberedTiles()
