@@ -1,5 +1,6 @@
 local class = require 'middleclass'
 require 'miscSettingsAndFunctions'
+require 'messageBox'
 
 AttackAction = class('AttackAction')
 
@@ -11,6 +12,7 @@ function AttackAction:attack(actor, damage, x, y)
   if actor ~= "Warlock" then
   Warlock.health = Warlock.health - damage
   Warlock.isInCombat = true
+  MessageBox:insertIntoLog("The " .. actor .. " strikes you!")
   end
 
   if actor == "Warlock" then
@@ -19,7 +21,9 @@ function AttackAction:attack(actor, damage, x, y)
   actors[actor].health = actors[actor].health - Warlock.damage
   Warlock.isInCombat = true
   Warlock.soulPower = Warlock.soulPower + 1
+  MessageBox:insertIntoLog("You strike the " .. actors[actor].name .. "!")
   if actors[actor].health <= 0 then
+    MessageBox:insertIntoLog("You kill the " .. actors[actor].name .. "!")
     table.remove(actors, actor) ; actorMap[x / gridMultiplier][y / gridMultiplier] = ""
     Warlock.healthFlasks = Warlock.healthFlasks + 1
   end

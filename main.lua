@@ -6,6 +6,7 @@ require 'userInterfaceFunctions'
 require 'mapAndLighting' -- anything to do with the map and lighting/FOV
 
 require 'actorAndPlayerClasses' -- actor superclass and player subclass
+require 'messageBox'
 require 'monsterClass'
 require 'goblin'
 
@@ -41,6 +42,7 @@ function game:enter()
   monster1 = goblin:new(Place())
   monster2 = goblin:new(Place())
   monster2 = goblin:new(Place())
+  MessageBox = MessageBox:new()
   FOV()
 end
 
@@ -50,6 +52,7 @@ function game:draw()
   drawMap()
   drawActors()
   UserInterface()
+  MessageBox:printToScreen()
 end
 
 function game:keypressed(key)
