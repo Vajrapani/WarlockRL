@@ -11,7 +11,7 @@ end
 Feyblade = class('Feyblade', Weapon)
 
 function Feyblade:initialize()
-damageModifier = 1
+damageModifier = 0
 name = "Feystriker"
 Weapon:initialize(name, damageModifier)
 end
