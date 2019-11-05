@@ -21,7 +21,7 @@ function AttackAction:attack(actor, damage, x, y)
   actors[actor].health = actors[actor].health - Warlock.damage
   Warlock.isInCombat = true
   Warlock.soulPower = Warlock.soulPower + 1
-  MessageBox:insertIntoLog("You strike the " .. actors[actor].name .. " and empower yourself with its Lifeforce.")
+  MessageBox:insertIntoLog("You strike the " .. actors[actor].name .. " and steal a fragment of its soul.")
   if actors[actor].health <= 0 then
     MessageBox:insertIntoLog("You kill the " .. actors[actor].name .. " and capture its soul in a flask.")
     table.remove(actors, actor) ; actorMap[x / gridMultiplier][y / gridMultiplier] = ""
