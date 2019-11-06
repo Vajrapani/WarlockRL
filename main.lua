@@ -16,6 +16,7 @@ actors = {} -- table gets populated by the actor class as new ones are created
 game = {}
 menu = {}
 weapon = {}
+buttons = {"kp1", "kp2","kp3", "kp4", "kp5", "kp6", "kp7", "kp8", "kp9", "h"}
 turncount = 0
 
 
@@ -56,10 +57,12 @@ function game:draw()
 end
 
 function game:keypressed(key)
-if key == "kp1" or "kp2" or "kp3" or "kp4" or "kp5" or "kp6" or "kp7" or "kp8" or "kp9" then -- only numpad
+for i,button in ipairs(buttons) do
+  if key == button then
   Warlock.input = key
   allActorsDoActions()
-end
+  end
+end -- for
 end-- keypressed()
 
 function love.load()
