@@ -129,7 +129,11 @@ elseif self.input == "h" then
   HealAction:playerHeal()
 
 elseif self.input == "]" then
+  if Warlock.soulPower >= 3 then
   AttackAction:sealOfTheWorld()
+  Warlock.soulPower = Warlock.soulPower - 3
+  else return false
+  end
 
 else return false -- if player presses a button not on here, the turn doesn't progress
   end -- end of big if statement with the numpad buttons
