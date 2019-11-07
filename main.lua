@@ -16,7 +16,7 @@ actors = {} -- table gets populated by the actor class as new ones are created
 game = {}
 menu = {}
 weapon = {}
-buttons = {"kp1", "kp2","kp3", "kp4", "kp5", "kp6", "kp7", "kp8", "kp9", "h"}
+buttons = {"kp1", "kp2","kp3", "kp4", "kp5", "kp6", "kp7", "kp8", "kp9", "h", "]"}
 turncount = 0
 
 

@@ -127,6 +127,10 @@ function player:getDecision()
 
 elseif self.input == "h" then
   HealAction:playerHeal()
+
+elseif self.input == "]" then
+  AttackAction:sealOfTheWorld()
+
 else return false -- if player presses a button not on here, the turn doesn't progress
   end -- end of big if statement with the numpad buttons
 

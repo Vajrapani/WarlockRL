@@ -1,6 +1,7 @@
 local class = require 'middleclass'
 require 'miscSettingsAndFunctions'
 require 'messageBox'
+require 'mapAndLighting'
 
 AttackAction = class('AttackAction')
 
@@ -31,3 +32,16 @@ function AttackAction:attack(actor, damage, x, y)
   end -- for
 end -- if
 end -- AttackAction:attack(damage)
+
+function AttackAction:sealOfTheWorld()
+for actor in ipairs(actors) do
+  local x = actors[actor].x
+  local y = actors[actor].y
+  if actors[actor].name ~= "Warlock" and isVisible[x / gridMultiplier][y / gridMultiplier] == 1 then
+        MessageBox:insertIntoLog("You kill the " .. actors[actor].name .. " and capture its soul in a flask!")
+        table.remove(actors, actor) ; actorMap[x / gridMultiplier][y / gridMultiplier] = ""
+        Warlock.healthFlasks = Warlock.healthFlasks + 1
+end -- if
+end -- for
+MessageBox:insertIntoLog("Thoth enacts his judgement! EMBRACE OBLIVION")
+end -- AttackAction:sealOfTheWorld()
