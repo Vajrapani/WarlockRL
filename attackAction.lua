@@ -38,10 +38,11 @@ for actor in ipairs(actors) do
   local x = actors[actor].x
   local y = actors[actor].y
   if actors[actor].name ~= "Warlock" and isVisible[x / gridMultiplier][y / gridMultiplier] == 1 then
-        MessageBox:insertIntoLog("You kill the " .. actors[actor].name .. " and capture its soul in a flask!")
         actors[actor] = nil ; actorMap[x / gridMultiplier][y / gridMultiplier] = ""
         Warlock.healthFlasks = Warlock.healthFlasks + 1
 end -- if
 end -- for
+MessageBox:insertIntoLog("You activate the Seal of The World.....")
 MessageBox:insertIntoLog("Thoth enacts his judgement! EMBRACE OBLIVION")
+MessageBox:insertIntoLog("You capture the souls of the enemies torn asunder.")
 end -- AttackAction:sealOfTheWorld()
