@@ -1,5 +1,5 @@
 function UserInterface()
-  love.graphics.setFont(InconsolataBold)
+  love.graphics.setFont(SourceCodeProBold)
   love.graphics.print({{NormaliseRGB(203, 75, 22)}, "* W A R L O C K *"}, 37 * gridMultiplier, 1 * gridMultiplier)
   love.graphics.print({{NormaliseRGB(203, 75, 22)}, "* Health : " .. Warlock.health .. " / " .. Warlock.maxHealth}, 37 * gridMultiplier, 3 * gridMultiplier)
   love.graphics.print({{NormaliseRGB(203, 75, 22)}, "* Turncount : " .. turncount}, 37 * gridMultiplier, 5 * gridMultiplier)

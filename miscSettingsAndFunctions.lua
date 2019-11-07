@@ -9,6 +9,8 @@ fontSize = 16
 gridMultiplier = fontSize - 2
 InconsolataBold = love.graphics.newFont('Inconsolata-Bold.ttf', fontSize)
 InconsolataRegular = love.graphics.newFont('Inconsolata-Regular.ttf', fontSize)
+SourceCodeProRegular = love.graphics.newFont('SourceCodePro-Regular.ttf', fontSize)
+SourceCodeProBold = love.graphics.newFont('SourceCodePro-Bold.ttf', fontSize)
 --
 
 -- colours
