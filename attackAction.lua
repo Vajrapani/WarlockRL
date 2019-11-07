@@ -39,7 +39,7 @@ for actor in ipairs(actors) do
   local y = actors[actor].y
   if actors[actor].name ~= "Warlock" and isVisible[x / gridMultiplier][y / gridMultiplier] == 1 then
         MessageBox:insertIntoLog("You kill the " .. actors[actor].name .. " and capture its soul in a flask!")
-        table.remove(actors, actor) ; actorMap[x / gridMultiplier][y / gridMultiplier] = ""
+        actors[actor] = nil ; actorMap[x / gridMultiplier][y / gridMultiplier] = ""
         Warlock.healthFlasks = Warlock.healthFlasks + 1
 end -- if
 end -- for
