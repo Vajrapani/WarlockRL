@@ -149,5 +149,10 @@ end
 end -- checkIfPlayerIsInCombat()
 
 function player:soulPowerdepletion()
-if self.isInCombat == false then if Warlock.soulPower > 0 then Warlock.soulPower = Warlock.soulPower - 1 end end
+if self.isInCombat == false then
+  if Warlock.soulPower > 0 then
+    Warlock.soulPower = Warlock.soulPower - 1
+    MessageBox:insertIntoLog("Your stolen soul fragments dissipate. ")
+  end
+end
 end -- soulPowerdepletion()
