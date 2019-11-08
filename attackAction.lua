@@ -37,9 +37,11 @@ function AttackAction:sealOfTheWorld()
 for actor in ipairs(actors) do
   local x = actors[actor].x
   local y = actors[actor].y
-  if actors[actor].name ~= "Warlock" and isVisible[x / gridMultiplier][y / gridMultiplier] == 1 then
+  if actors[actor].name ~= "Warlock" then
+    if isVisible[x / gridMultiplier][y / gridMultiplier] == 1 then
         actorMap[x / gridMultiplier][y / gridMultiplier] = "" ; actors[actor] = nil
         Warlock.healthFlasks = Warlock.healthFlasks + 1
+    end
 end -- if
 end -- for
 MessageBox:insertIntoLog("You activate the Seal of The World.....")
