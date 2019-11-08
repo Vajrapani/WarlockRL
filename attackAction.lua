@@ -25,7 +25,7 @@ function AttackAction:attack(actor, damage, x, y)
   MessageBox:insertIntoLog("Thoth's unstable magic blasts the " .. actors[actor].name .. ", and siphons its soul!")
   if actors[actor].health <= 0 then
     MessageBox:insertIntoLog("You kill the " .. actors[actor].name .. " and capture its soul in a flask!")
-    table.remove(actors, actor) ; actorMap[x / gridMultiplier][y / gridMultiplier] = ""
+    actorMap[x / gridMultiplier][y / gridMultiplier] = "" ; table.remove(actors, actor)
     Warlock.healthFlasks = Warlock.healthFlasks + 1
   end
   end -- if
@@ -38,7 +38,7 @@ for actor in ipairs(actors) do
   local x = actors[actor].x
   local y = actors[actor].y
   if actors[actor].name ~= "Warlock" and isVisible[x / gridMultiplier][y / gridMultiplier] == 1 then
-        actors[actor] = nil ; actorMap[x / gridMultiplier][y / gridMultiplier] = ""
+        actorMap[x / gridMultiplier][y / gridMultiplier] = "" ; actors[actor] = nil
         Warlock.healthFlasks = Warlock.healthFlasks + 1
 end -- if
 end -- for
