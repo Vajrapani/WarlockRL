@@ -36,6 +36,7 @@ self.maxHealth = 20
 self.health = 20
 self.healthFlasks = 1
 self.soulPower = 0
+self.soulPowerLimit = 6
 
 self.baseDamage = 3
 self.damage = self.baseDamage + Weapon.damageModifier + (self.soulPower * 2)

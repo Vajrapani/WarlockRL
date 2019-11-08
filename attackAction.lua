@@ -21,7 +21,7 @@ function AttackAction:attack(actor, damage, x, y)
   if actors[actor].x == x and actors[actor].y == y then
   actors[actor].health = actors[actor].health - Warlock.damage
   Warlock.isInCombat = true
-  Warlock.soulPower = Warlock.soulPower + 1
+  if Warlock.soulPower < Warlock.soulPowerLimit then Warlock.soulPower = Warlock.soulPower + 1 end
   MessageBox:insertIntoLog("Thoth's unstable magic blasts the " .. actors[actor].name .. ", and siphons its soul!")
   if actors[actor].health <= 0 then
     MessageBox:insertIntoLog("You kill the " .. actors[actor].name .. " and capture its soul in a flask!")
