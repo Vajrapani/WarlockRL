@@ -8,10 +8,10 @@ function Weapon:initialize(name, damageModifier)
     self.damageModifier = damageModifier
 end
 
-Feyblade = class('Feyblade', Weapon)
+BookOfThoth = class('BookOfThoth', Weapon)
 
-function Feyblade:initialize()
+function BookOfThoth:initialize()
 damageModifier = 0
-name = "Feystriker"
+name = "Book of Thoth"
 Weapon:initialize(name, damageModifier)
 end

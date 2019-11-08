@@ -57,7 +57,7 @@ end
 end -- takeAction()
 
 function player:updateDamage()
-self.damage = self.baseDamage + Weapon.damageModifier + (self.soulPower * 2)
+self.damage = self.baseDamage + Weapon.damageModifier + (self.soulPower * love.math.random(1, 8))
 end
 
 function player:getDecision()
