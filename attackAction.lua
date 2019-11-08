@@ -25,7 +25,7 @@ function AttackAction:attack(actor, damage, x, y)
   MessageBox:insertIntoLog("Thoth's unstable magic blasts the " .. actors[actor].name .. ", and siphons its soul!")
   if actors[actor].health <= 0 then
     MessageBox:insertIntoLog("You kill the " .. actors[actor].name .. " and capture its soul in a flask!")
-    table.remove(actors, actor) ; actorMap[x / gridMultiplier][y / gridMultiplier] = ""
+    actors[actor] = nil ; actorMap[x / gridMultiplier][y / gridMultiplier] = ""
     Warlock.healthFlasks = Warlock.healthFlasks + 1
   end
   end -- if
